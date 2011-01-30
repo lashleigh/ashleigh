@@ -8,4 +8,20 @@
 
 
 
-*/h1 { color: blue; }
+*/#content {
+  float: left;
+  margin: 20px;
+}
+#preview {
+  float: left;
+  width: 780px;
+}
+#test {
+  overflow: hidden;
+  clear: both;
+}
+#block {
+  margin: 0 20px;
+  text-align: justify;
+  width: 500px;
+}

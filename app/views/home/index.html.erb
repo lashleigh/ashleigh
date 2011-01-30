@@ -1,43 +1,13 @@
-<h1>Welcome to my most recent Rails things</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+<h1 id="block">Ashleigh</h1>
+<%= red(@title) %>
 
+<% form_tag do %>
+  <%= text_area_tag('content', @content, :rows => 40, :cols => 50)%>
+<% end %>
 
-<%= red('h1. Give RedCloth a try!
+<div id="preview"></div>
 
-h2. sub heading
+<div id="test">
+</div>
 
-p(my-class). A *simple* paragraph with
-a line break, some _emphasis_ and a "link":http://redcloth.org
-
-* an item
-* and another
-
-# one
-# two') %>
-
-<div id="placeholder" style="width:600px;height:300px;"></div>
-
-<script id="source" language="javascript" type="text/javascript">
-$(function () {
-    var d1 = [];
-    for (var i = 0; i < 14; i += 0.5)
-        d1.push([i, Math.sin(i)]);
-
-    var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
-
-    // a null signifies separate line segments
-    var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
-
-    var d4 = {
-      data: [[2,3],[5,5]],
-      label: "points",
-      lines: { show: false},
-      points: {show: true, fill: true, fillColor: "rgba(255, 255, 255, 0.8)"},
-    }
-    
-    $.plot($("#placeholder"), [ d1, d2, d3, d4 ]);
-});
-</script>
-
+<%= render :partial => "chart" %>
