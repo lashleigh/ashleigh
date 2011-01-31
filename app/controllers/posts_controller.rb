@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /posts
   # GET /posts.xml
   def index
@@ -41,7 +43,6 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-    @post.user = current_user
 
     respond_to do |format|
       if @post.save
