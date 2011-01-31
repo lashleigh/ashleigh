@@ -1,20 +1,20 @@
 class HomeController < ApplicationController
   def index
+  end
+  def preview
     @title = "p(#block). It doesn't really have a name or _(special-purpose)purpose_ yet, just a bit of fun. I'm hoping to pull in *MathJax* and some textile via *RedCloth*. There is already this nice live preview."
-    @content = 'h1. Basic header
+    @content = 'h1. Basic header -- Ashleigh\'s
 
-h2(pink). sub header with its own class
+h2(pink). "sub header with its own class..."
 
-p(my-class). A *simple* paragraph with
-a line break, some _emphasis_ and a "link":http://redcloth.org
+* *an item*
+* _and another_
+* a plain one just for fun
+* @some test code@
 
-* an item
-* and another
+p=. Center a paragraph
 
-# one
-# two
-
-Now two blocks of code made using the "bc." but what I really want is "bc.."
+The code shown here gets syntax highlighting from <a href="http://code.google.com/p/google-code-prettify/">prettify</a>.
 
 bc. cross (a1,a2) (b1,b2) (c1,c2)
     | thing == 0 = Straight

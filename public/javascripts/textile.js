@@ -19,7 +19,7 @@ var bq = /^bq\.(\.)?\s*/;
 var table=/^table\s*{(.*)}\..*/;
 var trstyle = /^\{(\S+)\}\.\s*\|/;
 
-function convert(t) {
+function parse_textile(t) {
 	var lines = t.split(/\r?\n/);
 	html="";
 	inpr=inbq=inbqq=0;

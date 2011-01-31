@@ -9,7 +9,7 @@ $(document).ready(function() {
 });
 
 function show_preview() {
-  $('#preview').html(superTextile($("#content").val()));
+  $('#preview').html(parse_textile($("#content").val()));
   $("pre").addClass("prettyprint");
   prettyPrint();
 }

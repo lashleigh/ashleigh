@@ -1,36 +1,27 @@
-//<![CDATA[
-<!--
-
-/*
- * This is the orginial function from Stuart Langridge at http://www.kryogenix.org/
- */
- 
-/*
-* This is the update function from Jeff Minard - http://www.jrm.cc/
-*/
-// The above links are half dead. I'm going to clean this up and then put it on 
-// github as a just and maybe paste the whole damn thing into SO.
-  
-    var myString = "p(my-class) Now a paragraph";
-    //var myRegexp = /(?:^|\s)format_(.*?)(?:\s|$)/g;
-    var myRegexp = /^p\((.+?)\)/g;
-    var match = myRegexp.exec(myString);
-    console.log(match[1]);
-
-function superTextile(s) {
+function parse_textile(s) {
   var r = s;
+
+  // Variables that require a simple replace
+  var basic = {"'":"&#8217;"," - ":" &#8211; ","--":"&#8212;"," x ":" &#215; ","\\.\\.\\.":"&#8230;","\\(C\\)":"&#169;","\\(R\\)":"&#174;","\\(TM\\)":"&#8482;"};
+  var align = {'>':'right','<':'left','=':'center','<>':'justify','~':'bottom','^':'top'};
+
+  for(i in basic) {r=r.replace(new RegExp(i,"g"), basic[i]);}
+
   // quick tags first
   qtags = [['\\*', 'strong'],
            ['\\?\\?', 'cite'],
            ['\\+', 'ins'],  //fixed
            ['~', 'sub'],   
            ['\\^', 'sup'], // me
-           ['@', 'code']];
+           ['@', 'code']]
   for (var i=0; i< qtags.length; i++) {
     ttag = qtags[i][0]; htag = qtags[i][1];
-    re = new RegExp(ttag+'\\b(.+?)\\b'+ttag,'g');
+    re = new RegExp(ttag+'(\\S.+?\\S)'+ttag,'g');
     r = r.replace(re,'<'+htag+'>'+'$1'+'</'+htag+'>');
   }
+
+  // TODO understand how the fuck this works. It makes nice ""
+	r=r.replace(/(=)?"([^\"]+)"/g,function($0,$1,$2){return ($1)?$0:"&#8220;"+$2+"&#8221;"});
 
   // underscores count as part of a word, so do them separately
   re = new RegExp('\\b_(.+?)_\\b','g');
@@ -70,29 +61,38 @@ function superTextile(s) {
     changed = 0;
 
     // Match bq. to create a block quote.
-    if (line.search(/^\s*bq\.\s+/) != -1) { 
+    if (line.search(/^bq\.\s+/) != -1) { 
       line = line.replace(/^\s*bq\.\s+/,'\t<blockquote>')+'</blockquote>'; 
       changed = 1; 
     }
 
     // Match bc. to create a block of code.
-    if (line.search(/^\s*bc\.\s+/) != -1) { 
-      line = line.replace(/^\s*bc\.\s+/,'\t<pre><code>')+'</code></pre>'; 
+    if (line.search(/^bc\.\s/) != -1) { 
+      line = line.replace(/^\s*bc\.\s/,'\t<pre><code>')+'</code></pre>'; 
       changed = 1; 
     }
 
     // Match headers with classes h1(my-class). Some header => <h1 class="my-class> Some header </h1>
-    if (line.search(/^\s*h[1-6]\(.+?\)\.\s+/) != -1) { 
+    if (line.search(/^h[1-6]\(.+?\)\.\s+/) != -1) { 
       re = new RegExp('h([1-6])\\(\(.+?\)\\)\.(.+)','g');
       line = line.replace(re,'<h$1 class="$2">$3</h$1>');
       changed = 1; 
     } 
+
     // Match headers. There was no need for alternations here, [1|2|3|4|5|6].
-    if (line.search(/^\s*h[1-6]\.\s+/) != -1) { 
+    if (line.search(/^h[1-6]\.\s+/) != -1) { 
       re = new RegExp('h([1-6])\.(.+)','g');
       line = line.replace(re,'<h$1>$2</h$1>');
       changed = 1; 
     } 
+
+    // Match paragraph and header alignment
+    if (line.search(/^(p|h[1-6])(>|<|=|<>)\.\s/) != -1) { 
+      re = /^(p|h[1-6])(>|<|=|<>)\.\s(.+)/;
+      var execResult = re.exec(line);
+      line = '<'+execResult[1]+' style="text-align:'+align[execResult[2]]+'">'+execResult[3]+'</p>';
+      changed = 1; 
+    }
 
     // Match paragraph classes
     if (line.search(/^p\((.+?)\)\.(.+)/) != -1) { 
@@ -134,6 +134,3 @@ function superTextile(s) {
 
   return r;
 }
-
-//-->
-//]]>
