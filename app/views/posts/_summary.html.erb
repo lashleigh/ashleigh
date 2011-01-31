@@ -1,0 +1,11 @@
+<% post = summary -%>
+<h2><%=link_to red(post.title), post %></h2>
+
+<div class="metadata">
+  <span class="user">Posted by <%= post.user.name %></span>
+  <span class="timestamp"><%= distance_of_time_in_words_to_now post.created_at %> ago</span>
+</div>
+
+<div class="post_content">
+  <%= red(post.content) %>
+</div>
