@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  layout 'post'
   # GET /posts
   # GET /posts.xml
   def index

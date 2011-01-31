@@ -1,6 +1,13 @@
 class HomeController < ApplicationController
   def index
+    @posts = Post.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @posts }
+    end
   end
+
   def preview
     @title = "p(#block). It doesn't really have a name or _(special-purpose)purpose_ yet, just a bit of fun. I'm hoping to pull in *MathJax* and some textile via *RedCloth*. There is already this nice live preview."
     @content = 'h1. Basic header -- Ashleigh\'s

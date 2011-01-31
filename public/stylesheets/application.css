@@ -8,22 +8,21 @@
 
 
 
-*/#content {
-  float: left;
-  margin: 20px;
-}
-#preview {
-  float: left;
-  width: 700px;
+*/#preview {
+  float: right;
+  width: 440px;
   border: 1px solid darkGray;
   margin: 20px 0;
-  padding: 0 1em;
+  padding: 1em;
   min-height: 350px;
+}
+#new_post, .edit_post {
+  float: left;
+  overflow: hidden;
 }
 #test {
   overflow: hidden;
   clear: both;
 }
-.block { margin: 0 20px; }
-.breathing-room { margin: 40px 20px; }
 .pink { color: #ff0066; }
+textarea { width: 400px; }

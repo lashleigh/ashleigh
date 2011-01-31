@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'prettify/prettify' %>
 
   <%= stylesheet_link_tag 'application' %>
-  <%= stylesheet_link_tag 'post' %>
+  <%= stylesheet_link_tag 'home' %>
   <%= stylesheet_link_tag 'prettify' %>
   <%= stylesheet_link_tag 'jquery-ui-1.8.7.custom' %>
  
@@ -20,19 +20,9 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-    <div class="header">
-      <div id="logo">
-        <h1><a href="#">lashleigh</a></h1>
-        <h2><%= red("Solve problem <--> imagine new project") %> </h2>
-      </div>
-    </div>
+    <%= render :partial => "/home/header" %>
 
-    <div class="content">
       <%= yield %>
-    </div>
-    <div id="sidebar">
-      <%= render :partial => "/posts/sidebar" %>
-    </div>
   </div>
 </body>
 </html>
