@@ -1,4 +1,6 @@
 Ashleigh::Application.routes.draw do
+  resources :posts
+
   get "home/index"
   get "home/preview"
 

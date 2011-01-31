@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     end
     # Log the authorizing user in.
     self.current_user = @auth.user
- 
-    render :text => "Welcome, #{current_user.name}."
+
+    redirect_to root_url, :notice => "Signed in! Welcome, #{current_user.name}."
   end
 end

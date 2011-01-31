@@ -3,13 +3,13 @@
 
 $(document).ready(function() {
   show_preview();
-  $('#content').keyup(function() {
+  $('#post_content').keyup(function() {
     show_preview();
   });
 });
 
 function show_preview() {
-  $('#preview').html(parse_textile($("#content").val()));
+  $('#preview').html(parse_textile($("#post_content").val()));
   $("pre").addClass("prettyprint");
   prettyPrint();
 }
