@@ -13,6 +13,7 @@ h2(pink). "sub header with its own class..."
 * @some test code@
 
 p=. Center a paragraph
+!http://farm5.static.flickr.com/4084/5011689559_faaba31577.jpg!
 
 The code shown here gets syntax highlighting from <a href="http://code.google.com/p/google-code-prettify/">prettify</a>.
 
@@ -20,7 +21,7 @@ bc. cross (a1,a2) (b1,b2) (c1,c2)
     | thing == 0 = Straight
     | thing  > 0 = LeftTurn
     | thing  < 0 = RightTurn
-    where thing = (c2-a2)*(b1-a1) - (c1-a1)*(b2-a2)
+    where thing = (c2 - a2)(b1 - a1) - (c1 - a1)(b2 - a2)
 
 bc. directionList [] = []
 directionList (_:[]) = []

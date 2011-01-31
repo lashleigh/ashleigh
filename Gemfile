@@ -11,7 +11,7 @@ gem 'more'
 gem 'RedCloth'
 gem 'acts-as-taggable-on'
 gem 'taps'
-gem 'devise'
+gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'

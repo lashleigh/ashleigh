@@ -2,6 +2,8 @@ Ashleigh::Application.routes.draw do
   get "home/index"
   get "home/preview"
 
+  match '/auth/:provider/callback', :to => 'sessions#create'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
