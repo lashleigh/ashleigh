@@ -1,13 +1,6 @@
-<h1 id="block">Ashleigh</h1>
-<%= red(@title) %>
-
 <% form_tag do %>
   <%= text_area_tag('content', @content, :rows => 40, :cols => 50)%>
 <% end %>
 
 <div id="preview"></div>
 
-<div id="test">
-</div>
-
-<%= render :partial => "chart" %>
