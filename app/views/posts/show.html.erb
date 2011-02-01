@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <%= red(@post.title) %>
+<div class="timestamp">Posted <%= distance_of_time_in_words_to_now @post.created_at %> ago</div>
 
 <%= red(@post.content) %>
 
