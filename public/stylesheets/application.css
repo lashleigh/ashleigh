@@ -14,7 +14,8 @@
   border: 1px solid darkGray;
   margin: 20px 0;
   padding: 1em;
-  min-height: 350px;
+  height: 600px;
+  overflow: scroll;
 }
 #new_post, .edit_post {
   float: left;
@@ -25,4 +26,7 @@
   clear: both;
 }
 .pink { color: #ff0066; }
-textarea { width: 400px; }
+textarea {
+  width: 400px;
+  height: 572px;
+}

@@ -2,10 +2,17 @@
 @dark_pink: #942765;
 @lime: #04970D;
 
-html, p, h2 {
+html, h2 {
   margin: 0;
   padding: 0;
-  }
+}
+p {
+  margin: 0;
+  padding: 0 0 .5em 0;
+}
+blockquote {
+  max-width: 450px;
+}
 body { 
   font: georgia, sans-serif;
   line-height: 1.5;
@@ -30,6 +37,10 @@ body {
     width: 900px;
     border-bottom: 1px dotted #ccc;
     margin: 0;
+}
+#header_math {
+  float: right;
+  color: @pink;
 }
 #logo {
   float: left;
@@ -96,7 +107,7 @@ body {
 
 .content {
     float: left;
-    padding: 0 0 30px 0;
+    padding: 0 0 130px 0;
     min-height: 420px;
     overflow: hidden;
     h2 {

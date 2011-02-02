@@ -1,6 +1,2 @@
-<% if @current_user and @current_user.admin? %>
-  <span id="new_post_link">(<%= link_to 'New', new_post_path %>)</span>
-<% end %>
-
 <%= render :partial => 'summary', :collection => @posts %>
 
