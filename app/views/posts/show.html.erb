@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<% if current_user and current_user.admin? %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to 'Destroy', @post, :confirm => 'Are you sure?', :method => :delete %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>
 
 <%= red(@post.title) %>
 <div class="timestamp">Posted <%= distance_of_time_in_words_to_now @post.created_at %> ago</div>
