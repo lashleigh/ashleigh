@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :current_user  
 
-  private
-
-  def authenticate
-    authenticate_or_request_with_http_basic do |user_name, password|
-      user_name == 'labaumgardner' && password == 'cwrv159.ab'
-    end
-  end
+  private  
+  def current_user  
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]  
+  end 
 end

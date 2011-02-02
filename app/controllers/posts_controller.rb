@@ -1,6 +1,4 @@
 class PostsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
-
   # GET /posts
   # GET /posts.xml
   def index
