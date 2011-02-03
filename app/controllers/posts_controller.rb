@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
   before_filter :must_be_admin, :except => [:index, :show]
 
+  def preview
+    @content = Post.find_by_id('1').content
+  end
   # GET /posts
   # GET /posts.xml
   def index
