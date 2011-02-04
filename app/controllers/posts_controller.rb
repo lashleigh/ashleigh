@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :must_be_admin, :except => [:index, :show]
+  before_filter :must_be_admin, :except => [:index, :show, :preview, :calculator, :game]
 
   def preview
     @content = Post.find_by_id('1').content

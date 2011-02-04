@@ -13,6 +13,7 @@ Ashleigh::Application.routes.draw do
   get "home/index"
   get "preview" => "posts#preview", :as => "preview"
   get "calculator" => "posts#calculator", :as => "calculator"
+  get "game" => "posts#game", :as => "game"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
