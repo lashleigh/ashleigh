@@ -6,15 +6,27 @@ var FPS = 30;
 
 var playerBullets = [];
 var enemies = [];
-  
+var interval;
+ 
+function pause(){
+  clearInterval(interval);
+  allowPressKeys = false;
+}
+
 $(function() { 
-  canvasElement.appendTo('.content');
+  canvasElement.prependTo('.content');
   player.sprite = Sprite("player");
 
-  setInterval(function() {
-    update();
-    draw();
-  }, 1000/FPS);
+  $("#pause").click( function() {
+    pause();
+  });
+  $("#play").click( function() {
+    clearInterval(interval);
+    interval = setInterval(function() {
+      update();
+      draw();
+    }, 1000/FPS);
+  });
 
   function update() {
     if (keydown.space) {
