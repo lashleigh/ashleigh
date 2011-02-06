@@ -1,0 +1,24 @@
+<%= javascript_include_tag 'note'%>
+<h1> Snap it </h1>
+
+<style>
+  .draggable { border: 1px dashed #777; overflow:hidden; float: left; font-size: .9em; }
+  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+</style>
+
+<div class="post_as_note">
+  <% @posts.each do |p| %>
+    <div id="<%= p.id%>" class="draggable">
+      <div class="ui-widget-content resizable" style="margin:20px;">
+        <textarea id="input" class="unformatted_content" style="display: none; ">
+          <%= p.content %>
+        </textarea>
+        <div class="formatted_content">
+        <%= red(p.content) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
