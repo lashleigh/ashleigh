@@ -1,6 +1,4 @@
 Ashleigh::Application.routes.draw do
-  get "note/index"
-
   get "log_in" => "sessions#new", :as => "log_in"  
   get "log_out" => "sessions#destroy", :as => "log_out"  
 
@@ -8,9 +6,8 @@ Ashleigh::Application.routes.draw do
   # any others to sign up
   #get "sign_up" => "users#new", :as => "sign_up"  
   resources :users 
-  resources :sessions  
-
   resources :posts
+  resources :notes
 
   get "home/index"
   get "preview" => "posts#preview", :as => "preview"

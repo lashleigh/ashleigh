@@ -3,18 +3,18 @@
 
 <style>
   .draggable { border: 1px dashed #777; overflow:hidden; float: left; font-size: .9em; }
-  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  .ui-widget-header p, .ui-widget-content p { margin: 10px; }
 </style>
 
-<div class="post_as_note">
-  <% @posts.each do |p| %>
-    <div id="<%= p.id%>" class="draggable">
+<div class="note_as_note">
+  <% @notes.each do |n| %>
+    <div id="<%= n.id%>" class="draggable">
       <div class="ui-widget-content resizable" style="margin:20px;">
         <textarea id="input" class="unformatted_content" style="display: none; ">
-          <%= p.content %>
+          <%= n.content %>
         </textarea>
         <div class="formatted_content">
-        <%= red(p.content) %>
+        <%= red(n.content) %>
         </div>
       </div>
     </div>
