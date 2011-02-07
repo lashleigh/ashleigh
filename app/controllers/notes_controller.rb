@@ -1,4 +1,19 @@
 class NotesController < ApplicationController
+
+  def dimension
+    @note = Note.find(params[:id])
+    @note.width = params[:width]
+    @note.height = params[:height]
+    @note.save
+  end
+
+  def position
+    @note = Note.find(params[:id])
+    @note.top = params[:ttop]
+    @note.left = params[:left]
+    @note.save
+  end
+
   def index
     @notes = Note.all
 

@@ -14,6 +14,8 @@ Ashleigh::Application.routes.draw do
   get "calculator" => "posts#calculator", :as => "calculator"
   get "game" => "posts#game", :as => "game"
   get "update" => "notes#update", :as => "update"
+  get "position" => "notes#position", :as => "position"
+  get "dimension" => "notes#dimension", :as => "dimension"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

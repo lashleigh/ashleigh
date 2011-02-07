@@ -2,8 +2,8 @@
 
 <div class="note_as_note">
   <% @notes.each do |n| %>
-    <div id="note_<%= n.id%>" class="draggable">
-      <div class="ui-widget-content resizable">
+    <div id="note_<%= n.id%>" class="draggable" style=<%=draggable_style(n)%>>
+      <div class="ui-widget-content resizable" style=<%=resizable_style(n)%>> 
         <%= form_for(n, :remote => true, :html => {:style => "display:none;"}) do |f| %>
           <%= f.text_area :content %>
           <%= f.hidden_field :id %>
