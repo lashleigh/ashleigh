@@ -1,18 +1,14 @@
-<%= javascript_include_tag 'note'%>
 <h1> Snap it </h1>
-
-<style>
-  .draggable { border: 1px dashed #777; overflow:hidden; float: left; font-size: .9em; }
-  .ui-widget-header p, .ui-widget-content p { margin: 10px; }
-</style>
 
 <div class="note_as_note">
   <% @notes.each do |n| %>
-    <div id="<%= n.id%>" class="draggable">
-      <div class="ui-widget-content resizable" style="margin:20px;">
-        <textarea id="input" class="unformatted_content" style="display: none; ">
-          <%= n.content %>
-        </textarea>
+    <div id="note_<%= n.id%>" class="draggable">
+      <div class="ui-widget-content resizable">
+        <%= form_for(n, :remote => true, :html => {:style => "display:none;"}) do |f| %>
+          <%= f.text_area :content %>
+          <%= f.hidden_field :id %>
+          <%= f.submit %>
+        <% end %>
         <div class="formatted_content">
         <%= red(n.content) %>
         </div>

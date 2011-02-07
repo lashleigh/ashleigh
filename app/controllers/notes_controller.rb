@@ -16,6 +16,7 @@ class NotesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @note }
+      format.js 
     end
   end
 
@@ -54,12 +55,13 @@ class NotesController < ApplicationController
   # PUT /notes/1
   # PUT /notes/1.xml
   def update
-    @note = Note.find(params[:id])
+    @note = Note.find(params[:note][:id])
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to(@note, :notice => 'Note was successfully updated.') }
+        format.html { render :text =>     RedCloth.new(params[:note][:content]).to_html } #redirect_to(@note, :notice => 'Note was successfully updated.') }
         format.xml  { head :ok }
+        format.js { render :text => params[:note][:content] }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @note.errors, :status => :unprocessable_entity }

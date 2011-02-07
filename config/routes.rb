@@ -13,6 +13,7 @@ Ashleigh::Application.routes.draw do
   get "preview" => "posts#preview", :as => "preview"
   get "calculator" => "posts#calculator", :as => "calculator"
   get "game" => "posts#game", :as => "game"
+  get "update" => "notes#update", :as => "update"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
