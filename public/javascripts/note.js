@@ -17,6 +17,12 @@ $(function() {
     }
   })
 
+  $(".resizable").mouseover( function() {
+    $(this).find(".delete").show();
+  });
+  $(".resizable").mouseout( function() {
+    $(".delete").hide();
+  });
   $(".resizable").dblclick( function() {
     var outer_height = $(this).height() - 15;
     var outer_width = $(this).width() - 15;
@@ -36,6 +42,12 @@ $(function() {
     });
     $('.edit_note').hide();
     $('.edit_note').next().show();
+  });
+
+  $(".delete").click( function(event) {
+    var self = $(this).attr("id").split("_")[1];
+    console.log(self);
+    $.get("/destroy", {id: self});
   });
 
   $(".slide").dblclick( function(event) {

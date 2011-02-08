@@ -16,6 +16,7 @@ Ashleigh::Application.routes.draw do
   get "update" => "notes#update", :as => "update"
   get "position" => "notes#position", :as => "position"
   get "dimension" => "notes#dimension", :as => "dimension"
+  get "destroy" => "notes#destroy", :as => "destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

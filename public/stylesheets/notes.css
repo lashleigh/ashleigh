@@ -48,6 +48,13 @@
   overflow-x: hidden;
   position: absolute;
 }
+a.delete {
+  display: none;
+  position: absolute;
+  border: none;
+  top: -12px;
+  left: -12px;
+}
 .slide {
   width: 960px;
   height: 720px;
