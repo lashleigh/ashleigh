@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.3)
+    RedCloth (4.2.5)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -36,8 +36,8 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    faraday (0.5.4)
-      addressable (~> 2.2.2)
+    faraday (0.5.5)
+      addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
     i18n (0.5.0)
@@ -91,6 +91,9 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
+    paper_trail (1.6.4)
+      actionpack (>= 2.3)
+      activerecord (>= 2.3)
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -149,6 +152,7 @@ DEPENDENCIES
   less
   more
   omniauth
+  paper_trail
   rails (= 3.0.3)
   sqlite3-ruby
   taps

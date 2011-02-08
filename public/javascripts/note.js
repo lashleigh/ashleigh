@@ -1,6 +1,6 @@
-var padding = 0;
-
 $(function() {
+  $("pre").addClass("prettyprint");
+  prettyPrint();
   $(".note").livequery( function() {
     $(this).draggable({ 
       snap: ".draggable, .slide",
@@ -31,6 +31,10 @@ $(function() {
   });
   $(".note").live("mouseout", function() {
     $(".delete").hide();
+  });
+  $(".note").live("click", function() {
+  $("pre").addClass("prettyprint");
+      prettyPrint();
   });
   $(".note").live("dblclick", function() {
     var outer_height = $(this).height() - 15;

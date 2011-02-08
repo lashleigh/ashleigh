@@ -14,6 +14,7 @@ gem 'RedCloth'
 gem 'acts-as-taggable-on'
 gem 'taps'
 gem 'omniauth'
+gem 'paper_trail'
 
 # Use unicorn as the web server
 # gem 'unicorn'
