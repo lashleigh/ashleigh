@@ -17,10 +17,10 @@ $(function() {
     }
   })
 
-  $(".resizable").mouseover( function() {
+  $(".resizable").live("mouseover", function() {
     $(this).find(".delete").show();
   });
-  $(".resizable").mouseout( function() {
+  $(".resizable").live("mouseout", function() {
     $(".delete").hide();
   });
   $(".resizable").dblclick( function() {
@@ -42,7 +42,7 @@ $(function() {
     $('.edit_note').next().show();
   });
 
-  $(".delete").click( function(event) {
+  $(".delete").live("click", function(event) {
     var self = $(this).attr("id").split("_")[1];
     console.log(self);
     $.get("/destroy", {id: self}, function(result, txtstatus) {
