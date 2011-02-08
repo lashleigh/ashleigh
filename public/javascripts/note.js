@@ -1,14 +1,17 @@
 $(function() {
-  $("pre").addClass("prettyprint");
-  prettyPrint();
+  prettify();
   $(".note").livequery( function() {
     $(this).draggable({ 
       snap: ".draggable, .slide",
-      opacity: 0.8,
+      opacity: 0.6,
       stack: ".note",
+      drag: function(event, ui) {
+        $(this).css("border", "1px dashed red");
+        },
       stop: function(event, ui) {
         var current = $(this)
         $.get("/position", {id: parseInt(current.attr("id").split("_")[1]), ttop: current.position().top, left: current.position().left })
+        $(this).css("border", "");
       }
     });
   });
@@ -28,13 +31,10 @@ $(function() {
 
   $(".note").live("mouseover", function() {
     $(this).find(".delete").show();
+    prettify();
   });
   $(".note").live("mouseout", function() {
     $(".delete").hide();
-  });
-  $(".note").live("click", function() {
-  $("pre").addClass("prettyprint");
-      prettyPrint();
   });
   $(".note").live("dblclick", function() {
     var outer_height = $(this).height() - 15;
@@ -72,4 +72,7 @@ $(function() {
       });
   });
 });
-
+function prettify() {
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+}

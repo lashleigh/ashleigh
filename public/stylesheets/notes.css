@@ -15,7 +15,6 @@ p { margin: 10px; }
   position: absolute !important;
   float: none !important;
   margin: 0 !important;
-  background: #ffffaa;
   color: #444444;
   z-index: 10;
 }
@@ -36,7 +35,6 @@ p { margin: 10px; }
   margin: 0;
   overflow-y: auto;
   border: none;
-  background: #ffffaa;
   font-size: 1em;
   color: #444444;
 }
@@ -55,7 +53,8 @@ a.delete {
 .slide {
   width: 960px;
   height: 620px;
-  border: 1px dotted red;
+  border: 1px dotted black;
+  background: -webkit-gradient(radial, 430 50, 0, 430 50, 541, from(white), to(#aaaaaa));
 }
 textarea::-webkit-scrollbar {
   width: 6px;
