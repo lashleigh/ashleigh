@@ -39,9 +39,15 @@ class NotesController < ApplicationController
   # GET /notes/new.xml
   def new
     @note = Note.new
+    @note.top = params[:top]
+    @note.left = params[:left]
+    @note.width = params[:width]
+    @note.height = params[:height]
+    @note.content = ""
+    @note.save
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :text => "good note" } # new.html.erb
       format.xml  { render :xml => @note }
     end
   end
@@ -58,7 +64,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to(@note, :notice => 'Note was successfully created.') }
+        format.html { render :text => "New note" } #redirect_to(@note, :notice => 'Note was successfully created.') }
         format.xml  { render :xml => @note, :status => :created, :location => @note }
       else
         format.html { render :action => "new" }

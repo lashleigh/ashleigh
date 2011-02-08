@@ -1,21 +1,18 @@
-<h1> Snap it </h1>
-
-<div class="note_as_note">
-  <% @notes.each do |n| %>
-    <div id="note_<%= n.id%>" class="draggable" style=<%=draggable_style(n)%>>
-      <div class="resizable" style=<%=resizable_style(n)%>> 
-        <div class="in_place_editor_field">
-          <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
-            <%= f.text_area :content %>
-            <%= f.hidden_field :id %>
-          <% end %>
-          <div class="formatted_content" style=<%=content_style(n)%>>
-            <%= red(n.content) %>
-          </div>
+<div class="slide"></div>
+<% @notes.each do |n| %>
+  <div id="note_<%= n.id%>" class="draggable" style=<%=draggable_style(n)%>>
+    <div class="resizable" style=<%=resizable_style(n)%>> 
+      <div class="in_place_editor_field">
+        <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
+          <%= f.text_area :content %>
+          <%= f.hidden_field :id %>
+        <% end %>
+        <div class="formatted_content" style=<%=content_style(n)%>>
+          <%= red(n.content) %>
         </div>
+        <div class="preview" style=<%=content_style(n)%>></div>
       </div>
     </div>
-  <% end %>
-
-</div>
+  </div>
+<% end %>
 

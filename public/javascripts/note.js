@@ -1,12 +1,13 @@
 $(function() {
   $( ".draggable" ).draggable({ 
-    snap: true,
+    snap: ".draggable, .slide",
     stop: function(event, ui) {
       var current = $(this)
       $.get("/position", {id: parseInt(current.attr("id").split("_")[1]), ttop: current.position().top, left: current.position().left })
     }
   })
   $( ".resizable" ).resizable({
+    containment: '.slide',
     resize: function(event, ui) {
       $(this).find('.formatted_content').css("width",(ui.size.width-10)+"px");
       $(this).find('.formatted_content').css("height",(ui.size.height-10)+"px");
@@ -37,5 +38,13 @@ $(function() {
     $('.edit_note').next().show();
   });
 
+  $(".slide").dblclick( function(event) {
+    $.get("notes/new", {
+      top: event.offsetY, 
+      left: event.offsetX,
+      width: 200, 
+      height: 200 });
+      //$(self).find('.formatted_content').html(result);
+  });
 });
 

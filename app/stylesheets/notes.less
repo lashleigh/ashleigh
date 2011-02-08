@@ -15,28 +15,33 @@
   z-index: 10;
 }
 .in_place_editor_field {
-position: absolute;
-left: 5px;
-top: 5px;
-width: 100%;
-height: 100%;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  width: 100%;
+  height: 100%;
 }
-input {
-position: absolute !important;
-right: 8px !important;
-bottom: 8px;
+.formatted_content input {
+  position: absolute !important;
+  right: 8px !important;
+  bottom: 8px;
 }
-textarea {
+.in_place_editor_field textarea {
   display: block;
   margin: 0 ;
   overflow-y: auto;
   border: none;
   background: #FFA;
 }
-.formatted_content {
+.formatted_content, .preview {
   overflow-y: auto;
   overflow-x: hidden;
   position: absolute;
+}
+.slide {
+  width: 960px;
+  height: 720px;
+  border: 1px dotted red;
 }
 .formatted_content ::-webkit-scrollbar {
 width: 6px;
