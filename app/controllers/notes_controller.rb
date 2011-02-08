@@ -47,7 +47,7 @@ class NotesController < ApplicationController
     @note.save
 
     respond_to do |format|
-      format.html { render :text => "good note" } # new.html.erb
+      format.html { render :partial => "format_note", :object => @note } # new.html.erb
       format.xml  { render :xml => @note }
     end
   end
@@ -80,7 +80,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { render :text =>     RedCloth.new(params[:note][:content]).to_html } #redirect_to(@note, :notice => 'Note was successfully updated.') }
+        format.html { render :text => RedCloth.new(params[:note][:content]).to_html } #redirect_to(@note, :notice => 'Note was successfully updated.') }
         format.xml  { head :ok }
         format.js { render :text => params[:note][:content] }
       else

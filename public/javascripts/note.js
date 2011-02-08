@@ -28,8 +28,6 @@ $(function() {
     var outer_width = $(this).width() - 15;
     $(this).find(".edit_note").find("textarea").css("height", outer_height+"px");
     $(this).find(".edit_note").find("textarea").css("width", outer_width+"px");
-    //$(this).find(".edit_note").css("height", outer_height);
-    //$(this).find(".edit_note").css("width", outer_width);
     $(this).find(".edit_note").show();
     $(this).find(".edit_note").find("textarea").focus();
     $(this).find(".formatted_content").hide();
@@ -47,7 +45,9 @@ $(function() {
   $(".delete").click( function(event) {
     var self = $(this).attr("id").split("_")[1];
     console.log(self);
-    $.get("/destroy", {id: self});
+    $.get("/destroy", {id: self}, function(result, txtstatus) {
+      $("#note_"+self).hide();   
+    });
   });
 
   $(".slide").dblclick( function(event) {
@@ -55,8 +55,9 @@ $(function() {
       top: event.offsetY, 
       left: event.offsetX,
       width: 200, 
-      height: 200 });
-      //$(self).find('.formatted_content').html(result);
+      height: 200 }, function(result, txtstatus) {
+      $("#content").append(result);
+      });
   });
 });
 
