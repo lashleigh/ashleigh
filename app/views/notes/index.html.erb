@@ -3,14 +3,15 @@
 <div class="note_as_note">
   <% @notes.each do |n| %>
     <div id="note_<%= n.id%>" class="draggable" style=<%=draggable_style(n)%>>
-      <div class="ui-widget-content resizable" style=<%=resizable_style(n)%>> 
-        <%= form_for(n, :remote => true, :html => {:style => "display:none;"}) do |f| %>
-          <%= f.text_area :content %>
-          <%= f.hidden_field :id %>
-          <%= f.submit %>
-        <% end %>
-        <div class="formatted_content">
-        <%= red(n.content) %>
+      <div class="resizable" style=<%=resizable_style(n)%>> 
+        <div class="in_place_editor_field">
+          <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
+            <%= f.text_area :content %>
+            <%= f.hidden_field :id %>
+          <% end %>
+          <div class="formatted_content" style=<%=content_style(n)%>>
+            <%= red(n.content) %>
+          </div>
         </div>
       </div>
     </div>
