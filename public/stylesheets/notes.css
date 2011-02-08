@@ -9,20 +9,14 @@
 
 
 */.pink { color: #ff6ec7; }
-.draggable {
+p { margin: 10px; }
+.note {
   border: 1px dashed #777777;
   position: absolute !important;
   float: none !important;
   margin: 0 !important;
-}
-.resizable {
-  margin: 20px;
   background: #ffffaa;
   color: #444444;
-  -webkit-box-shadow: 0px 0px 3px #999999;
-  box-shadow: 0px 0px 3px #999999;
-  -moz-box-shadow: 0px 0px 3px #999999;
-  border: 1px solid #888888;
   z-index: 10;
 }
 .in_place_editor_field {
@@ -43,6 +37,8 @@
   overflow-y: auto;
   border: none;
   background: #ffffaa;
+  font-size: 1em;
+  color: #444444;
 }
 .formatted_content, .preview {
   overflow-y: auto;
@@ -53,8 +49,8 @@ a.delete {
   display: none;
   position: absolute;
   border: none;
-  top: -12px;
-  left: -12px;
+  top: -20px;
+  right: -10px;
 }
 .slide {
   width: 960px;

@@ -14,4 +14,8 @@ module NotesHelper
   def draggable_style(n)
     "top:#{n.top}px;"+"left:#{n.left}px;"
   end
+
+  def style(n)
+    "top:#{n.top}px;"+"left:#{n.left}px;"+"width:#{n.width}px;"+"height:#{n.height}px;"
+  end
 end

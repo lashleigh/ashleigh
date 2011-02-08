@@ -1,6 +1,5 @@
 <% n = format_note-%>
-<div id="note_<%= n.id%>" class="draggable" style=<%=draggable_style(n)%>>
-  <div class="resizable" style=<%=resizable_style(n)%>> 
+<div id="note_<%= n.id%>" class="note draggable resizable" style=<%=style(n)%>>
     <div class="in_place_editor_field">
       <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
         <%= f.text_area :content %>
@@ -11,6 +10,5 @@
       </div>
       <a id="delete_<%= n.id %>" class="delete" href="#"><img alt="Close" src="/images/close.png"></a>
     </div>
-  </div>
 </div>
 

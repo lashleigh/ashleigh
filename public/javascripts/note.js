@@ -1,33 +1,38 @@
+var padding = 0;
+
 $(function() {
-  $(".draggable").livequery( function() {
+  $(".note").livequery( function() {
     $(this).draggable({ 
       snap: ".draggable, .slide",
+      opacity: 0.8,
+      stack: ".note",
       stop: function(event, ui) {
         var current = $(this)
         $.get("/position", {id: parseInt(current.attr("id").split("_")[1]), ttop: current.position().top, left: current.position().left })
       }
     });
   });
-  $(".resizable").livequery( function() {
+  $(".note").livequery( function() {
     $(this).resizable({
-      containment: '.slide',
       resize: function(event, ui) {
+        $(this).find('.in_place_editor_field').css("width",(ui.size.width)+"px");
+        $(this).find('.in_place_editor_field').css("height",(ui.size.height)+"px");
         $(this).find('.formatted_content').css("width",(ui.size.width-10)+"px");
         $(this).find('.formatted_content').css("height",(ui.size.height-10)+"px");
       },
       stop: function(event, ui) {
-        $.get("/dimension", {id: parseInt($(this).parent().attr("id").split("_")[1]), width: $(this).width(), height: $(this).height() })
+        $.get("/dimension", {id: parseInt($(this).attr("id").split("_")[1]), width: $(this).width(), height: $(this).height() })
       }
     });
   });
 
-  $(".resizable").live("mouseover", function() {
+  $(".note").live("mouseover", function() {
     $(this).find(".delete").show();
   });
-  $(".resizable").live("mouseout", function() {
+  $(".note").live("mouseout", function() {
     $(".delete").hide();
   });
-  $(".resizable").live("dblclick", function() {
+  $(".note").live("dblclick", function() {
     var outer_height = $(this).height() - 15;
     var outer_width = $(this).width() - 15;
     $(this).find(".edit_note").find("textarea").css("height", outer_height+"px");
@@ -37,7 +42,7 @@ $(function() {
     $(this).find(".formatted_content").hide();
   });
     
-  $(".resizable").live("focusout", function() {
+  $(".note").live("focusout", function() {
     var self = this;
     $.get("/update", $(this).find(".edit_note").serialize(), function(result, txtstatus) {
       $(self).find('.formatted_content').html(result);
