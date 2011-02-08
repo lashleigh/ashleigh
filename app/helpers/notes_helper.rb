@@ -18,4 +18,15 @@ module NotesHelper
   def style(n)
     "top:#{n.top}px;"+"left:#{n.left}px;"+"width:#{n.width}px;"+"height:#{n.height}px;"
   end
+
+  def note_class(n)
+    n_class = "note"
+    if n.resizable
+      n_class += " resizable"
+    end
+    if n.draggable
+      n_class += " draggable"
+    end
+    return n_class
+  end
 end

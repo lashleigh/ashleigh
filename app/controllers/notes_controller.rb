@@ -43,6 +43,9 @@ class NotesController < ApplicationController
     @note.left = params[:left]
     @note.width = params[:width]
     @note.height = params[:height]
+    @note.draggable = params[:draggable]
+    @note.resizable = params[:resizable]
+ 
     @note.content = ""
     @note.save
 
@@ -77,7 +80,9 @@ class NotesController < ApplicationController
   # PUT /notes/1.xml
   def update
     @note = Note.find(params[:note][:id])
-
+    @note.draggable = params[:draggable]
+    @note.resizable = params[:resizable]
+ 
     respond_to do |format|
       if @note.update_attributes(params[:note])
         format.html { render :text => RedCloth.new(params[:note][:content]).to_html } #redirect_to(@note, :notice => 'Note was successfully updated.') }

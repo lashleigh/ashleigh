@@ -1,14 +1,15 @@
 <% n = format_note-%>
-<div id="note_<%= n.id%>" class="note draggable resizable" style=<%=style(n)%>>
-    <div class="in_place_editor_field">
-      <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
-        <%= f.text_area :content %>
-        <%= f.hidden_field :id %>
-      <% end %>
-      <div class="formatted_content" style=<%=content_style(n)%>>
-        <%= red(n.content) %>
-      </div>
-      <a id="delete_<%= n.id %>" class="delete" href="#"><img alt="Close" src="/images/close.png"></a>
+<div id="note_<%= n.id%>" class="<%=note_class(n)%>" style=<%=style(n)%>>
+  <div class="in_place_editor_field">
+    <%= form_for(n, :remote => true, :html => {:style => "#{form_style(n)}"}) do |f| %>
+      <%= f.text_area :content %>
+      <%= f.hidden_field :id %>
+      <%= render :partial => "options", :object => n %>
+    <% end %>
+    <div class="formatted_content" style=<%=content_style(n)%>>
+      <%= red(n.content) %>
     </div>
+    <a id="delete_<%= n.id %>" class="delete" href="#"><img alt="Close" src="/images/close.png"></a>
+  </div>
 </div>
 

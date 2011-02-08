@@ -1,6 +1,6 @@
 $(function() {
   prettify();
-  $(".note").livequery( function() {
+  $(".draggable").livequery( function() {
     $(this).draggable({ 
       snap: ".draggable, .slide",
       opacity: 0.6,
@@ -15,7 +15,7 @@ $(function() {
       }
     });
   });
-  $(".note").livequery( function() {
+  $(".resizable").livequery( function() {
     $(this).resizable({
       resize: function(event, ui) {
         $(this).find('.in_place_editor_field').css("width",(ui.size.width)+"px");
@@ -42,11 +42,10 @@ $(function() {
     $(this).find(".edit_note").find("textarea").css("height", outer_height+"px");
     $(this).find(".edit_note").find("textarea").css("width", outer_width+"px");
     $(this).find(".edit_note").show();
-    $(this).find(".edit_note").find("textarea").focus();
     $(this).find(".formatted_content").hide();
   });
     
-  $(".note").live("focusout", function() {
+  $(".note").live("blur", function() {
     var self = this;
     $.get("/update", $(this).find(".edit_note").serialize(), function(result, txtstatus) {
       $(self).find('.formatted_content').html(result);

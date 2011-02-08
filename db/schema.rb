@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208055206) do
+ActiveRecord::Schema.define(:version => 20110208083446) do
 
   create_table "notes", :force => true do |t|
     t.text     "content"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(:version => 20110208055206) do
     t.integer  "height"
     t.integer  "top"
     t.integer  "left"
+    t.boolean  "draggable",  :default => true
+    t.boolean  "resizable",  :default => true
   end
 
   create_table "posts", :force => true do |t|

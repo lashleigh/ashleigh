@@ -1,0 +1,17 @@
+<% n = options-%>
+<div class="options">
+  <% if n.draggable %>
+    <%= check_box_tag 'draggable', true, :checked => true %>
+    <%= label_tag 'draggable' %>
+  <% else %>
+    <%= check_box_tag 'draggable', true %>
+    <%= label_tag 'draggable' %>
+  <% end %>
+  <% if n.resizable %>
+    <%= check_box_tag 'resizable', true, :checked => true %>
+    <%= label_tag 'resizable' %>
+  <% else %>
+    <%= check_box_tag 'resizable', true %>
+    <%= label_tag 'resizable' %>
+  <% end %>
+</div>
