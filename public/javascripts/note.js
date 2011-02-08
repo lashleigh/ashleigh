@@ -37,6 +37,8 @@ $(function() {
     $(".delete").hide();
   });
   $(".note").live("dblclick", function() {
+    $(".edit_note").hide();
+    $(".formatted_content").show();
     var outer_height = $(this).height() - 15;
     var outer_width = $(this).width() - 15;
     $(this).find(".edit_note").find("textarea").css("height", outer_height+"px");

@@ -8,6 +8,37 @@ bottom: 18px;
 }
 h1 {
 }
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.center {
+  margin: auto; 
+  position: absolute; 
+  top: 0px; 
+  bottom: 0px; 
+  left: 0px; 
+  right: 0px; 
+}
+#content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.centerbox {
+  /* flexbox, por favor */
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  /* this could be vertical, too */
+  -webkit-box-orient: horizontal; 
+  /* these centers do the hard work */
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+
 p {
   margin: 10px;
 }
@@ -52,6 +83,7 @@ top: -20px;
 right: -10px;
 }
 .slide {
+  position: relative;
   border-radius: 18px;
   width: 960px;
   height: 620px;
