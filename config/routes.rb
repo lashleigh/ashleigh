@@ -6,6 +6,7 @@ Ashleigh::Application.routes.draw do
   # any others to sign up
   #get "sign_up" => "users#new", :as => "sign_up"  
   resources :users 
+  resources :sessions
   resources :posts
   resources :notes
 

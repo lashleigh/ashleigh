@@ -2,16 +2,17 @@ $(function() {
   prettify();
   $(".draggable").livequery( function() {
     $(this).draggable({ 
-      snap: ".draggable, .slide",
+      snap: ".draggable, .slide_inner",
       opacity: 0.6,
       stack: ".note",
       drag: function(event, ui) {
-        $(this).css("border", "1px dashed red");
+        $(".note").css("border-color", "rgba(25, 25, 25, 0.5)");
+        $(this).css("border-color", "rgba(255, 25, 25, 0.8)");
         },
       stop: function(event, ui) {
         var current = $(this)
         $.get("/position", {id: parseInt(current.attr("id").split("_")[1]), ttop: current.position().top, left: current.position().left })
-        $(this).css("border", "");
+        $(".note").css("border-color", "rgba(25, 25, 25, 0.0)");
       }
     });
   });
@@ -22,19 +23,24 @@ $(function() {
         $(this).find('.in_place_editor_field').css("height",(ui.size.height)+"px");
         $(this).find('.formatted_content').css("width",(ui.size.width-10)+"px");
         $(this).find('.formatted_content').css("height",(ui.size.height-10)+"px");
+        $(".note").css("border-color", "rgba(25, 25, 25, 0.5)");
+        $(this).css("border-color", "rgba(255, 25, 25, 0.8)");
       },
       stop: function(event, ui) {
         $.get("/dimension", {id: parseInt($(this).attr("id").split("_")[1]), width: $(this).width(), height: $(this).height() })
+        $(".note").css("border-color", "rgba(25, 25, 25, 0.0)");
       }
     });
   });
 
   $(".note").live("mouseover", function() {
     $(this).find(".delete").show();
+    $(this).css("border-color", "rgba(25, 25, 25, 0.8)");
     prettify();
   });
   $(".note").live("mouseout", function() {
     $(".delete").hide();
+    $(".note").css("border-color", "rgba(25, 25, 25, 0.0)");
   });
   $(".note").live("dblclick", function() {
     $(".edit_note").hide();
@@ -63,7 +69,7 @@ $(function() {
     });
   });
 
-  $(".slide").dblclick( function(event) {
+  $(".creation_mask").dblclick( function(event) {
     $.get("notes/new", {
       top: event.offsetY, 
       left: event.offsetX,

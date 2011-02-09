@@ -1,7 +1,10 @@
 <div class="centerbox">
-<div class="slide">
-<% @notes.each do |n| %>
-  <%= render :partial => "format_note", :object => n %>
-<% end %>
-</div>
+  <div class="slide centerbox">
+    <div class="creation_mask"></div>
+    <div class="slide_inner">
+      <% @notes.each do |n| %>
+        <%= render :partial => "format_note", :object => n %>
+      <% end %>
+    </div>
+  </div>
 </div>
